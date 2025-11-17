@@ -1,0 +1,11 @@
+# Keep gradle wrapper scripts tracked
+!gradlew
+!gradlew.bat
+
+# Usual Android/Gradle ignores
+/.gradle/
+/build/
+/local.properties
+**/captures/
+*.iml
+.gradle/

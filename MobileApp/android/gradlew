@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# PUBLIC_INTERFACE
+# Minimal gradlew shim: invokes Gradle Wrapper using the distribution configured in gradle/wrapper.
+# This is needed in some CI/Docker environments where the gradlew script file is not present in the project template.
+set -euo pipefail
+
+GRADLEW_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WRAPPER_JAR="$GRADLEW_DIR/gradle/wrapper/gradle-wrapper.jar"
+
+if [ ! -f "$WRAPPER_JAR" ]; then
+  echo "ERROR: Gradle wrapper JAR not found at $WRAPPER_JAR"
+  echo "Ensure gradle/wrapper/gradle-wrapper.properties is present and wrapper files are checked in."
+  exit 1
+fi
+
+# Exec using Java; rely on CI having Java 17 as required by AGP 8.x
+exec java -jar "$WRAPPER_JAR" "$@"
