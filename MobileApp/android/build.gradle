@@ -1,11 +1,11 @@
 buildscript {
+    // Kept minimal; Flutter tooling now uses pluginManagement in settings.gradle
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        // Legacy classpath kept only if custom scripts need it, but Flutter v2 uses pluginManagement in settings.gradle.
-        // Left empty intentionally.
+        // intentionally empty
     }
 }
 
